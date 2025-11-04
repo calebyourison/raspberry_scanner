@@ -1,0 +1,191 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>raspberry_wifi_scanner.calculations &mdash; raspberry-wifi-scanner 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            raspberry-wifi-scanner
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">raspberry_wifi_scanner</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">raspberry-wifi-scanner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">raspberry_wifi_scanner.calculations</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for raspberry_wifi_scanner.calculations</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<div class="viewcode-block" id="convert_dbm_to_mw">
+<a class="viewcode-back" href="../../raspberry_wifi_scanner.html#raspberry_wifi_scanner.calculations.convert_dbm_to_mw">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_dbm_to_mw</span><span class="p">(</span><span class="n">dbm</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert dBm to value representing milliwatts of power</span>
+
+<span class="sd">    :param dbm: numerical value dBm, example -50</span>
+<span class="sd">    :type dbm: int</span>
+
+<span class="sd">    :return: milliwatts of power</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mw</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="n">dbm</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">mw</span></div>
+
+
+
+<div class="viewcode-block" id="convert_mw_to_dbm">
+<a class="viewcode-back" href="../../raspberry_wifi_scanner.html#raspberry_wifi_scanner.calculations.convert_mw_to_dbm">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_mw_to_dbm</span><span class="p">(</span><span class="n">mw</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert mW of power representing dBm signal strength</span>
+
+<span class="sd">    :param mw: numerical value of mW, example 0.0001</span>
+<span class="sd">    :type mw: int</span>
+
+<span class="sd">    :return: dBm signal strength</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">dbm</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">mw</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dbm</span></div>
+
+
+
+<div class="viewcode-block" id="power_leakage">
+<a class="viewcode-back" href="../../raspberry_wifi_scanner.html#raspberry_wifi_scanner.calculations.power_leakage">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">power_leakage</span><span class="p">(</span>
+    <span class="n">dbm</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">center_channel</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">valid_channels</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+    <span class="n">drop_db_per_channel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">floor_dbm</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">120</span><span class="p">,</span>
+    <span class="n">spread</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Approximate signal leakage onto nearby Wi-Fi channels.</span>
+<span class="sd">    This is a very rough estimation suited for 20 MHz channel width and will not be helpful for varied widths.</span>
+
+<span class="sd">    :param dbm: signal level on center channel</span>
+<span class="sd">    :type dbm: int</span>
+
+<span class="sd">    :param center_channel: channel on which network is located</span>
+<span class="sd">    :type center_channel: int</span>
+
+<span class="sd">    :param valid_channels: list of valid channels for a given area</span>
+<span class="sd">    :type valid_channels: list[int]</span>
+
+<span class="sd">    :param drop_db_per_channel: signal level in dbm of expected drop in channel moving away from center channel</span>
+<span class="sd">    :type drop_db_per_channel: int</span>
+
+<span class="sd">    :param floor_dbm: lowest dbm value, essentially the noise floor</span>
+<span class="sd">    :type floor_dbm: int</span>
+
+<span class="sd">    :param spread: number of channels away from center that experience power leakage, everything beyond to be valued at floor_dbm</span>
+<span class="sd">    :type spread: int</span>
+
+<span class="sd">    :return: key/value of all valid channels and approximate power transmission (mW) on that channel</span>
+<span class="sd">    :rtype: dict[int, float]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">negligible_mw</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">convert_dbm_to_mw</span><span class="p">(</span><span class="n">floor_dbm</span><span class="p">)</span>
+
+    <span class="n">output</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">valid_channels</span><span class="p">:</span>
+        <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ch</span> <span class="o">-</span> <span class="n">center_channel</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">offset</span> <span class="o">&lt;=</span> <span class="n">spread</span><span class="p">:</span>
+            <span class="n">leak_dbm</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">dbm</span> <span class="o">-</span> <span class="p">(</span><span class="n">offset</span> <span class="o">*</span> <span class="n">drop_db_per_channel</span><span class="p">)</span>
+            <span class="n">leak_mw</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">convert_dbm_to_mw</span><span class="p">(</span><span class="n">leak_dbm</span><span class="p">),</span> <span class="n">negligible_mw</span><span class="p">)</span>
+            <span class="n">output</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span> <span class="o">=</span> <span class="n">leak_mw</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_dbm_to_mw</span><span class="p">(</span><span class="n">floor_dbm</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">output</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Caleb Yourison.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

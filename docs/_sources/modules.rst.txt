@@ -1,0 +1,7 @@
+raspberry_wifi_scanner
+======================
+
+.. toctree::
+   :maxdepth: 4
+
+   raspberry_wifi_scanner

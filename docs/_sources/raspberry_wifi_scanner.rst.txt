@@ -1,0 +1,53 @@
+raspberry_wifi_scanner package
+==============================
+
+Submodules
+----------
+
+raspberry_wifi_scanner.calculations module
+------------------------------------------
+
+.. automodule:: raspberry_wifi_scanner.calculations
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+raspberry_wifi_scanner.data\_collection module
+----------------------------------------------
+
+.. automodule:: raspberry_wifi_scanner.data_collection
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+raspberry_wifi_scanner.dataframe\_functions module
+--------------------------------------------------
+
+.. automodule:: raspberry_wifi_scanner.dataframe_functions
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+raspberry_wifi_scanner.definitions module
+-----------------------------------------
+
+.. automodule:: raspberry_wifi_scanner.definitions
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+raspberry_wifi_scanner.plotting module
+--------------------------------------
+
+.. automodule:: raspberry_wifi_scanner.plotting
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: raspberry_wifi_scanner
+   :members:
+   :show-inheritance:
+   :undoc-members:

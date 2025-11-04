@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>raspberry_wifi_scanner package &mdash; raspberry-wifi-scanner 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="raspberry_wifi_scanner" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            raspberry-wifi-scanner
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">raspberry_wifi_scanner</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">raspberry_wifi_scanner package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-raspberry_wifi_scanner.calculations">raspberry_wifi_scanner.calculations module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.calculations.convert_dbm_to_mw"><code class="docutils literal notranslate"><span class="pre">convert_dbm_to_mw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.calculations.convert_mw_to_dbm"><code class="docutils literal notranslate"><span class="pre">convert_mw_to_dbm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.calculations.power_leakage"><code class="docutils literal notranslate"><span class="pre">power_leakage()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-raspberry_wifi_scanner.data_collection">raspberry_wifi_scanner.data_collection module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.data_collection.generate_df_from_cells"><code class="docutils literal notranslate"><span class="pre">generate_df_from_cells()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.data_collection.get_cells"><code class="docutils literal notranslate"><span class="pre">get_cells()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.data_collection.get_wireless_interfaces"><code class="docutils literal notranslate"><span class="pre">get_wireless_interfaces()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.data_collection.iwlist_command"><code class="docutils literal notranslate"><span class="pre">iwlist_command()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.data_collection.parse_cells"><code class="docutils literal notranslate"><span class="pre">parse_cells()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.data_collection.scan"><code class="docutils literal notranslate"><span class="pre">scan()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-raspberry_wifi_scanner.dataframe_functions">raspberry_wifi_scanner.dataframe_functions module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.dataframe_functions.dbm_per_channel"><code class="docutils literal notranslate"><span class="pre">dbm_per_channel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.dataframe_functions.split_by_band"><code class="docutils literal notranslate"><span class="pre">split_by_band()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.dataframe_functions.split_by_mac_list"><code class="docutils literal notranslate"><span class="pre">split_by_mac_list()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-raspberry_wifi_scanner.definitions">raspberry_wifi_scanner.definitions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-raspberry_wifi_scanner.plotting">raspberry_wifi_scanner.plotting module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.plotting.gaussian_curve"><code class="docutils literal notranslate"><span class="pre">gaussian_curve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.plotting.plot_curves"><code class="docutils literal notranslate"><span class="pre">plot_curves()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry_wifi_scanner.plotting.plot_over_time"><code class="docutils literal notranslate"><span class="pre">plot_over_time()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-raspberry_wifi_scanner">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">raspberry-wifi-scanner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">raspberry_wifi_scanner</a></li>
+      <li class="breadcrumb-item active">raspberry_wifi_scanner package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/raspberry_wifi_scanner.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="raspberry-wifi-scanner-package">
+<h1>raspberry_wifi_scanner package<a class="headerlink" href="#raspberry-wifi-scanner-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-raspberry_wifi_scanner.calculations">
+<span id="raspberry-wifi-scanner-calculations-module"></span><h2>raspberry_wifi_scanner.calculations module<a class="headerlink" href="#module-raspberry_wifi_scanner.calculations" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.calculations.convert_dbm_to_mw">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.calculations.</span></span><span class="sig-name descname"><span class="pre">convert_dbm_to_mw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dbm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/calculations.html#convert_dbm_to_mw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.calculations.convert_dbm_to_mw" title="Link to this definition"></a></dt>
+<dd><p>Convert dBm to value representing milliwatts of power</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dbm</strong> (<em>int</em>) – numerical value dBm, example -50</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>milliwatts of power</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.calculations.convert_mw_to_dbm">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.calculations.</span></span><span class="sig-name descname"><span class="pre">convert_mw_to_dbm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/calculations.html#convert_mw_to_dbm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.calculations.convert_mw_to_dbm" title="Link to this definition"></a></dt>
+<dd><p>Convert mW of power representing dBm signal strength</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mw</strong> (<em>int</em>) – numerical value of mW, example 0.0001</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dBm signal strength</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.calculations.power_leakage">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.calculations.</span></span><span class="sig-name descname"><span class="pre">power_leakage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dbm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_db_per_channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">floor_dbm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-120</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spread</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/calculations.html#power_leakage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.calculations.power_leakage" title="Link to this definition"></a></dt>
+<dd><p>Approximate signal leakage onto nearby Wi-Fi channels.
+This is a very rough estimation suited for 20 MHz channel width and will not be helpful for varied widths.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dbm</strong> (<em>int</em>) – signal level on center channel</p></li>
+<li><p><strong>center_channel</strong> (<em>int</em>) – channel on which network is located</p></li>
+<li><p><strong>valid_channels</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – list of valid channels for a given area</p></li>
+<li><p><strong>drop_db_per_channel</strong> (<em>int</em>) – signal level in dbm of expected drop in channel moving away from center channel</p></li>
+<li><p><strong>floor_dbm</strong> (<em>int</em>) – lowest dbm value, essentially the noise floor</p></li>
+<li><p><strong>spread</strong> (<em>int</em>) – number of channels away from center that experience power leakage, everything beyond to be valued at floor_dbm</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>key/value of all valid channels and approximate power transmission (mW) on that channel</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[int, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-raspberry_wifi_scanner.data_collection">
+<span id="raspberry-wifi-scanner-data-collection-module"></span><h2>raspberry_wifi_scanner.data_collection module<a class="headerlink" href="#module-raspberry_wifi_scanner.data_collection" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.data_collection.generate_df_from_cells">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.data_collection.</span></span><span class="sig-name descname"><span class="pre">generate_df_from_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cells</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/data_collection.html#generate_df_from_cells"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.data_collection.generate_df_from_cells" title="Link to this definition"></a></dt>
+<dd><p>Return pandas DataFrame from parsed cells with appropriate dtypes for desired columns, add time and quality_decimal columns</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cells</strong> (<em>list</em><em>[</em><em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – parsed values from ‘iwlist &lt;interface&gt; scan’</p></li>
+<li><p><strong>location</strong> (<em>str</em>) – (optional) User defined location, will create additional column</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataframe with columns [“time”, “mac”, “essid”, “channel”, “frequency_GHz”, “signal_dBm”, “quality”, “quality_decimal”] with optional “location”</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.data_collection.get_cells">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.data_collection.</span></span><span class="sig-name descname"><span class="pre">get_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iwlist_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/data_collection.html#get_cells"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.data_collection.get_cells" title="Link to this definition"></a></dt>
+<dd><p>Return a list of strings from joined lines for each cell in string output of ‘iwlist (interface) scan’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>iwlist_string</strong> (<em>str</em>) – string output of ‘iwlist &lt;interface&gt; scan’ command</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of raw strings, one for each cell discovered during scan: empty list if nothing found</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.data_collection.get_wireless_interfaces">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.data_collection.</span></span><span class="sig-name descname"><span class="pre">get_wireless_interfaces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'/sys/class/net'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/data_collection.html#get_wireless_interfaces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.data_collection.get_wireless_interfaces" title="Link to this definition"></a></dt>
+<dd><p>Returns a list of wireless interface names by checking /sys/class/net, or other designated path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>net_path</strong> (<em>str</em>) – directory for installed network interface</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of valid wireless interfaces or None if not found</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str], None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.data_collection.iwlist_command">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.data_collection.</span></span><span class="sig-name descname"><span class="pre">iwlist_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'get'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/data_collection.html#iwlist_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.data_collection.iwlist_command" title="Link to this definition"></a></dt>
+<dd><p>Return raw string text output of command ‘iwlist &lt;interface&gt; scan’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface</strong> (<em>str</em>) – name of wireless interface or ‘get’ to run get_wireless_interfaces()</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>raw string output of subprocess command</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.data_collection.parse_cells">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.data_collection.</span></span><span class="sig-name descname"><span class="pre">parse_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cells</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/data_collection.html#parse_cells"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.data_collection.parse_cells" title="Link to this definition"></a></dt>
+<dd><p>Parse string outputs of cells and return a list of dictionaries for appropriate keys/values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cells</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – list of raw strings, one for each cell discovered during scan or None</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of dictionaries with parsed values for appropriate fields</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[dict[str, str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.data_collection.scan">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.data_collection.</span></span><span class="sig-name descname"><span class="pre">scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'get'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/data_collection.html#scan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.data_collection.scan" title="Link to this definition"></a></dt>
+<dd><p>Generate a pandas DataFrame by parsing lines from iwlist &lt;interface&gt; scan</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface</strong> (<em>str</em>) – name of wireless interface or ‘get’ to run get_wireless_interfaces()</p></li>
+<li><p><strong>location</strong> (<em>str</em>) – (optional) User defined location, will create additional column</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataframe with columns [“time”, “mac”, “essid”, “channel”, “frequency_GHz”, “signal_dBm”, “quality”, “quality_decimal”] with optional “location”</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-raspberry_wifi_scanner.dataframe_functions">
+<span id="raspberry-wifi-scanner-dataframe-functions-module"></span><h2>raspberry_wifi_scanner.dataframe_functions module<a class="headerlink" href="#module-raspberry_wifi_scanner.dataframe_functions" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.dataframe_functions.dbm_per_channel">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.dataframe_functions.</span></span><span class="sig-name descname"><span class="pre">dbm_per_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/dataframe_functions.html#dbm_per_channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.dataframe_functions.dbm_per_channel" title="Link to this definition"></a></dt>
+<dd><p>Return a DataFrame that provides overall dBm activity for all channels in the given list, overlap optional.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Dataframe containing columns [“channel”, “signal_dBm”]</p></li>
+<li><p><strong>valid_channels</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – list of channels to investigate</p></li>
+<li><p><strong>overlap</strong> (<em>bool</em>) – (Optional) if True, take overlapping channel approximations into account</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame with summed values for all provided channels</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.dataframe_functions.split_by_band">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.dataframe_functions.</span></span><span class="sig-name descname"><span class="pre">split_by_band</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/dataframe_functions.html#split_by_band"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.dataframe_functions.split_by_band" title="Link to this definition"></a></dt>
+<dd><p>Return two dataframes: 2.4 GHz networks and 5/6 GHz networks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.Dataframe</em>) – Dataframe containing a “channel” column</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>2.4 GHz networks and 5/6 GHz networks</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[pd.DataFrame, pd.Dataframe]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.dataframe_functions.split_by_mac_list">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.dataframe_functions.</span></span><span class="sig-name descname"><span class="pre">split_by_mac_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">macs_to_include</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/dataframe_functions.html#split_by_mac_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.dataframe_functions.split_by_mac_list" title="Link to this definition"></a></dt>
+<dd><p>Return to dataframes: one for mac addresses that are included in the list, one for macs that are not.
+This can be useful to isolate your own network(s) from the local area to analyze channel occupancy, dbm, etc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Dataframe containing a “mac” column</p></li>
+<li><p><strong>macs_to_include</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – list of mac addresses in a format matching the scan data: ie [“00:00:00:00:00:00”, …]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>One DF for rows whose mac address is included in the list, and a second for rows that are not</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[pd.DataFrame, pd.Dataframe]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-raspberry_wifi_scanner.definitions">
+<span id="raspberry-wifi-scanner-definitions-module"></span><h2>raspberry_wifi_scanner.definitions module<a class="headerlink" href="#module-raspberry_wifi_scanner.definitions" title="Link to this heading"></a></h2>
+</section>
+<section id="module-raspberry_wifi_scanner.plotting">
+<span id="raspberry-wifi-scanner-plotting-module"></span><h2>raspberry_wifi_scanner.plotting module<a class="headerlink" href="#module-raspberry_wifi_scanner.plotting" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.plotting.gaussian_curve">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.plotting.</span></span><span class="sig-name descname"><span class="pre">gaussian_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quality</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spread</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/plotting.html#gaussian_curve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.plotting.gaussian_curve" title="Link to this definition"></a></dt>
+<dd><p>Return a tuple of ndarray (x,y) for plotting approximate curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>center</strong> (<em>int</em>) – channel at which network is centered</p></li>
+<li><p><strong>quality</strong> (<em>float</em>) – signal quality of the network (typically between 0 and 1)</p></li>
+<li><p><strong>spread</strong> (<em>int</em>) – number of channels for the curve to reach on either side of center (typically around 2 for 20 MHz width)</p></li>
+<li><p><strong>step</strong> (<em>float</em>) – increments on the x-axis to calculate, typically a smaller number will produce a smoother curve</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>two arrays of x, y values for plotting</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[np.ndarray, np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.plotting.plot_curves">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_curves</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spread</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Figure</span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/plotting.html#plot_curves"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.plotting.plot_curves" title="Link to this definition"></a></dt>
+<dd><p>Return a Plotly Figure of plotted curves based on signal_quality column and defined channel spread</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Dataframe containing signal quality and channel columns along with essid for its name</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title of plot</p></li>
+<li><p><strong>spread</strong> (<em>int</em>) – number of channels on left/right side of center to cover</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Figure with a curve for every supplied row/network</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>go.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="raspberry_wifi_scanner.plotting.plot_over_time">
+<span class="sig-prename descclassname"><span class="pre">raspberry_wifi_scanner.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_over_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Figure</span></span></span><a class="reference internal" href="_modules/raspberry_wifi_scanner/plotting.html#plot_over_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#raspberry_wifi_scanner.plotting.plot_over_time" title="Link to this definition"></a></dt>
+<dd><p>Return a figure of a given column plotted over time based on a given category</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Aggregated/sorted DataFrame recommend to sort_values(by=[‘time’, category]) in advance</p></li>
+<li><p><strong>y_column</strong> (<em>str</em>) – Given column to plot on the Y-Axis</p></li>
+<li><p><strong>category</strong> (<em>str</em>) – column name to separate the data into groups for individual traces, examples: “channel”, “mac”, “essid”, etc</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title for the plot</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A figure with a trace for each unique value in the category column</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>go.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-raspberry_wifi_scanner">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-raspberry_wifi_scanner" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="raspberry_wifi_scanner" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Caleb Yourison.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
