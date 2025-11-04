@@ -23,7 +23,7 @@ By default, the `scan()` function will attempt to determine a valid wireless int
 
 It is recommended to designate one explicitly. Call a function to see a list of discovered interfaces.
 
-The scan function will parse the contents of "iwlist <interface> scan" into a pandas DataFrame.
+The scan function will parse the contents of "iwlist (interface) scan" into a pandas DataFrame.
 
 ```bash
 from raspberry_wifi_scanner import get_wireless_interfaces, scan
@@ -53,7 +53,7 @@ my_networks, local_noise = split_by_mac(df=local_2_4_GHz, macs_to_include=my_net
 fig_local_noise = plot_curves(df=local_noise, title="Channel Usage On 2.4 GHz Band Excluding My Networks")
 
 fig_all_2_4.show()
-fig_local_noise()
+fig_local_noise.show()
 ```
 
 Observe transmission power on a band of channels over time:
