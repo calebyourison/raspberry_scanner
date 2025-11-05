@@ -3,14 +3,16 @@
 This project is designed with Raspberry Pi's portability in mind, though many of the functions could also be used on other Debian based systems.
 
 The primary objective is aid in the Wi-Fi optimization process, ideally by scanning the local area every so often to see which channels are the best choice for your network.  
-You can take samples in different locations around your site to gauge performance.
+You can take samples in different locations around your site to gauge performance.  
+
+One way to use this project is to copy the directory "uv_scanner" to your device and run it with `uv`.  Please see the README for details.
 
 Generally speaking, it is recommended to disconnect from any Wi-Fi networks prior to scanning.
 
-Feel free to modify the code to fit your use case.
-
+---
 **Ensure that you are acting in accordance with local regulations regarding wireless activity and that scanning via wireless interfaces is permitted.  
 Do not use these tools to violate the privacy of others, or for any other malicious purposes.**
+---
 
 #### Getting Started
 ---
@@ -87,9 +89,10 @@ fig = plot_over_time(df=dbm_calculations, y_column="overall_dBm", category="chan
 fig.show()
 
 ```
-
+---
 ## DISCLAIMER
 **Prior to using wireless tools such as these or any others, please confirm the regulations in your area.
 Some jurisdictions have strict policies and might consider this to be surveillance.  
 If required, it is recommended to aggregate the data by signal strength, channel usage, etc. and discard information that could be tied to a specific entity.
 This project is not responsible for any misuse or abuse, nor does it condone such practices.**
+---
