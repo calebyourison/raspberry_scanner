@@ -57,6 +57,14 @@ fig_local_noise = plot_curves(df=local_noise, title="Channel Usage On 2.4 GHz Ba
 fig_all_2_4.show()
 fig_local_noise.show()
 ```
+---
+![My plot](example_plots/local_2_4_GHz.png)
+
+---
+
+![My plot](example_plots/local_noise.png)
+
+---
 
 Observe transmission power on a band of channels over time:
 
