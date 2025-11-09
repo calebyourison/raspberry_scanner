@@ -2,6 +2,7 @@ def main():
     from raspberry_wifi_scanner.data_collection import scan
     from raspberry_wifi_scanner.dataframe_functions import split_by_band
     from raspberry_wifi_scanner.plotting import plot_curves
+    import pandas as pd
     from datetime import datetime
     import argparse
 
@@ -11,20 +12,30 @@ def main():
 
     args = parser.parse_args()
 
-    location = args.location
+    location: str = args.location
 
-    directory = args.directory
+    directory: str = args.directory
 
-    filename = directory + f"{location} {datetime.now().strftime("%Y-%m-%d_%H-%M")}.csv"
+    filename: str = directory + f"{location} {datetime.now().strftime("%Y-%m-%d_%H-%M")}.csv"
 
-    wireless_interface = "get" # Set explicitly if needed "wlan0" "wlan1" etc
+    wireless_interface: str = "get" # Set explicitly if needed "wlan0" "wlan1" etc
 
-    data = scan(interface=wireless_interface, location=location)
+    def retry_scan(attempts: int = 5) -> pd.DataFrame:
+        """Retry n times if scan yields zero rows"""
+        scan_data: pd.DataFrame = scan(interface=wireless_interface, location=location)
 
-    # In case nothing is found
-    while data.shape[0] == 0:
-        print("Nothing found on scan")
-        data = scan(location=location)
+        for attempt in range(1, attempts + 1):
+            if scan_data.shape[0] > 0:
+                return scan_data
+            else:
+                print(f"Attempt {attempt} produced an empty scan, retrying")
+                scan_data: pd.DataFrame = scan(interface=wireless_interface, location=location)
+
+        print("All attempts produced an empty scan")
+
+        return scan_data
+
+    data: pd.DataFrame = retry_scan(attempts=5)
 
     data.to_csv(filename, index=False)
     two_ghz, five_ghz = split_by_band(data)

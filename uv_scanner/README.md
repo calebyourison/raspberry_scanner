@@ -16,7 +16,7 @@ cd /home/raspberry/Desktop/uv_scanner && uv run main.py /home/raspberry/Desktop/
 
 As currently configured, this will save the file locally and present two plots in your browser: one for 2.4 GHz networks and one for 5 GHz networks.
 
-If your scan returns zero results it will continue to try until something is found, so this could potentially result in an infinite loop if run in an area with no wireless activity.
+It will run a total of 5 scan attempts until at least one network is found.
 
 For best results, temporarily disconnect from any wireless networks prior to scanning.
 
