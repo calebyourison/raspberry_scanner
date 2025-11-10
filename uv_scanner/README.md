@@ -1,7 +1,16 @@
 # uv_scanner
 ---
 
-Once `uv` is [installed](https://docs.astral.sh/uv/getting-started/installation/) and the folder "uv_scanner" is copied to your device, you can run the script with `uv run`
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/).
+
+Copy the folder to your device and unzip.
+ ```bash
+curl -L -o uv_scanner.zip https://github.com/calebyourison/raspberry_scanner/releases/download/uv_scanner/uv_scanner.zip
+
+unzip uv_scanner.zip
+ ```
+
+You can run the script with `uv run`.
 
 The script is looking for two variables: a path to save the file, and a name for your present location.
 
