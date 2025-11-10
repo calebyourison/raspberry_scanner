@@ -5,7 +5,7 @@ This project is designed with Raspberry Pi's portability in mind, though many of
 The primary objective is aid in the Wi-Fi optimization process, ideally by scanning the local area every so often to see which channels are the best choice for your network.  
 You can take samples in different locations around your site to gauge performance.  
 
-One way to use this project is to copy the directory "uv_scanner" to your device and run it with `uv`.  Please see the README for details.
+One way to use this project is to copy the directory "uv_scanner" to your device and run it with `uv`.  Please see the [README](https://github.com/calebyourison/raspberry_scanner/blob/master/uv_scanner/README.md) for details.
 
 Generally speaking, it is recommended to disconnect from any Wi-Fi networks prior to scanning.
 
