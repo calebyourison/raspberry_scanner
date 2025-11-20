@@ -103,7 +103,10 @@ fig = plot_over_time(
 fig.show()
 
 ```
+---
+
 ![My plot](example_plots/2_4_channel_dbm_over_time.png)
+
 ---
 ## DISCLAIMER
 **Prior to using wireless tools such as these or any others, please confirm the regulations in your area.
