@@ -70,15 +70,16 @@ Observe transmission power on a band of channels over time:
 
 ```bash
 import pandas as pd
+import time
 
 from raspberry_wifi_scanner import scan
 from raspberry_wifi_scanner.dataframe_functions import split_by_band, dbm_per_channel
 from raspberry_wifi_scanner.plotting import plot_over_time
 
 one = scan(interface="wlan0")
-time.sleep(60)
+time.sleep(300)
 two = scan(interface="wlan0")
-time.sleep(120)
+time.sleep(600)
 three = scan(interface="wlan0")
 
 valid_2_4_channels = [1,2,3,4,5,6,7,8,9,10,11]
@@ -92,11 +93,17 @@ for df in [one, two, three]:
     
 dbm_calculations = pd.concat(dbm)
 
-fig = plot_over_time(df=dbm_calculations, y_column="overall_dBm", category="channel", title="2.4 GHz Overall dBm Per Channel Over Time")
+fig = plot_over_time(
+    df=dbm_calculations, 
+    y_column="overall_dBm", 
+    category="channel", 
+    title="2.4 GHz Overall dBm Per Channel Over Time"
+)
 
 fig.show()
 
 ```
+![My plot](example_plots/2_4_channel_dbm_over_time.png)
 ---
 ## DISCLAIMER
 **Prior to using wireless tools such as these or any others, please confirm the regulations in your area.
