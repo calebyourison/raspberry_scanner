@@ -1,11 +1,16 @@
-# uv_scanner
+# uv_scanner on armv6
 ---
+
+**Variants of Raspberry Pi running on armv6 32 bit can sometimes prevent challenges for package installation.
+This workaround falls back to the lightweight `parse` library and will save a .csv file to a local directory
+for use on a different machine that can perform analysis and plotting.
+Designed for headless installations that are only collecting periodic data**
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/).
 
 Copy the folder to your device and unzip.
  ```bash
-curl -L -o uv_scanner.zip https://github.com/calebyourison/raspberry_scanner/releases/download/uv_scanner/uv_scanner.zip
+curl -L -o uv_scanner.zip https://github.com/calebyourison/raspberry_scanner/releases/download/uv_scanner_armv6/uv_scanner.zip
 
 unzip uv_scanner.zip
  ```
@@ -23,7 +28,7 @@ cd /home/raspberry/Desktop/uv_scanner && uv run main.py /home/raspberry/Desktop/
 
 ```
 
-As currently configured, this will save the file locally and present two plots in your browser: one for 2.4 GHz networks and one for 5 GHz networks.
+As currently configured, this will save the .csv file locally but will not display any plots.
 
 It will run a total of 5 scan attempts until at least one network is found.
 
@@ -31,8 +36,4 @@ For best results, temporarily disconnect from any wireless networks prior to sca
 
 Ensure you are using the correct wireless interface and designate it explicitly if needed.  By default, a Raspberry will present `wlan0`.  USB devices might be `wlan1`.
 
-Modify as needed.
-
-For 32 bit devices on armv6, you might encounter issues with package installation.
-
-Consider the 32 bit workaround: [README](https://github.com/calebyourison/raspberry_scanner/blob/master/uv_scanner_armv6/README.md).
+Modify as needed.  
