@@ -10,7 +10,7 @@ Install [uv](https://docs.astral.sh/uv/getting-started/installation/).
 
 Copy the folder to your device and unzip.
  ```bash
-curl -L -o uv_scanner.zip https://github.com/calebyourison/raspberry_scanner/releases/download/uv_scanner_armv6/uv_scanner.zip
+curl -L -o uv_scanner_armv6.zip https://github.com/calebyourison/raspberry_scanner/releases/download/uv_scanner_armv6/uv_scanner_armv6.zip
 
 unzip uv_scanner.zip
  ```

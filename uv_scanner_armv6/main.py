@@ -12,7 +12,6 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("directory")
     parser.add_argument("location")
-    parser.add_argument("kuma_url")
 
     args = parser.parse_args()
 
