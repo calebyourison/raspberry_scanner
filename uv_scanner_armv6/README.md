@@ -12,7 +12,7 @@ Copy the folder to your device and unzip.
  ```bash
 curl -L -o uv_scanner_armv6.zip https://github.com/calebyourison/raspberry_scanner/releases/download/uv_scanner_armv6/uv_scanner_armv6.zip
 
-unzip uv_scanner.zip
+unzip uv_scanner_armv6.zip
  ```
 
 You can run the script with `uv run`.
