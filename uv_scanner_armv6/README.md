@@ -1,10 +1,10 @@
 # uv_scanner on armv6
 ---
 
-**Variants of Raspberry Pi running on armv6 32 bit can sometimes prevent challenges for package installation.
+**Variants of Raspberry Pi running on armv6 32 bit can sometimes present challenges for package installation.
 This workaround falls back to the lightweight `parse` library and will save a .csv file to a local directory
 for use on a different machine that can perform analysis and plotting.
-Designed for headless installations that are only collecting periodic data**
+Designed for headless installations that are only collecting periodic data.**
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/).
 
@@ -23,7 +23,7 @@ You can navigate into the directory or use its absolute path and chain everythin
 
 ```bash
 
-    # Path to script                                    # Path to save file      # Location of scan      
+    # Path to script folder                             # Path to save file      # Location of scan      
 cd /home/raspberry/Desktop/uv_scanner && uv run main.py /home/raspberry/Desktop/ Living_Room
 
 ```

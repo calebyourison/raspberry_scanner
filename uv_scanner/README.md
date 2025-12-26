@@ -18,7 +18,7 @@ You can navigate into the directory or use its absolute path and chain everythin
 
 ```bash
 
-    # Path to script                                    # Path to save file      # Location of scan      
+    # Path to script folder                             # Path to save file      # Location of scan      
 cd /home/raspberry/Desktop/uv_scanner && uv run main.py /home/raspberry/Desktop/ Living_Room
 
 ```
