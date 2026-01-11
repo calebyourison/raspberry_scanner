@@ -99,11 +99,14 @@ def get_cells(iwlist_string: str) -> list[str]:
 
     cell_lines: list[str] = []
 
+    # Account for escape line variation
+    if "\\n" in iwlist_string and "\n" not in iwlist_string:
+        iwlist_string = iwlist_string.encode().decode("unicode_escape")
+
     cells: list[str] = iwlist_string.split("Cell")
 
     for cell in cells[1:]:
-        # pieces: list[str] = cell.splitlines()
-        pieces: list[str] = cell.split("\\n")
+        pieces = cell.splitlines()
         cleaned: str = "+".join([item.strip() for item in pieces])
         cell_lines.append(cleaned)
 
