@@ -25,7 +25,8 @@ By default, the `scan()` function will attempt to determine a valid wireless int
 
 It is recommended to designate one explicitly. Call a function to see a list of discovered interfaces.
 
-The scan function will parse the contents of "iwlist (interface) scan" into a pandas DataFrame.
+The scan function will parse the contents of "iwlist (interface) scan" into a pandas DataFrame.  
+Please ensure that "wireless-tools" is installed.
 
 ```bash
 from raspberry_wifi_scanner import get_wireless_interfaces, scan
