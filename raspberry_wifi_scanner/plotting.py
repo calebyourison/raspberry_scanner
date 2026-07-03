@@ -82,7 +82,7 @@ def plot_over_time(
     :param y_column: Given column to plot on the Y-Axis
     :type y_column: str
 
-    :param category: column name to separate the data into groups for individual traces, examples: "channel", "mac", "essid", etc
+    :param category: column name which will separate the data into groups for individual traces, examples: "channel", "mac", "essid", etc.
     :type category: str
 
     :param title: Title for the plot
