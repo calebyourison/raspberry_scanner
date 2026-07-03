@@ -4,7 +4,7 @@ from datetime import datetime
 
 import pandas as pd
 from template_log_parser import parse_function, compile_templates
-from template_log_parser.templates.definitions import SimpleTemplate
+from template_log_parser.definitions import SimpleTemplate
 
 base_scan_columns = [
     "time",
