@@ -33,7 +33,7 @@ from raspberry_wifi_scanner import get_wireless_interfaces, scan
 
 interfaces = get_wireless_interfaces()
 
-local_networks = scan(interface="wlan0", location="My Front Door")
+local_networks = scan(interface=interfaces[0], location="My Front Door")
 
 print(local_networks.columns)
 Index(['time', 'mac', 'essid', 'channel', 'frequency_GHz', 'signal_dBm', 'quality', 'quality_decimal', 'location'])
@@ -42,7 +42,7 @@ Index(['time', 'mac', 'essid', 'channel', 'frequency_GHz', 'signal_dBm', 'qualit
 If desired, the data can be further separated and plotted to see a visual display:
 
 ```bash
-from raspberry_wifi_scanner.dataframe_functions import split_by_band, split_by_mac
+from raspberry_wifi_scanner.dataframe_functions import split_by_band, split_by_mac_list
 from raspberry_wifi_scanner.plotting import plot_curves
 
 local_2_4_GHz, local_5_6_GHz = split_by_band(df=local_networks)
@@ -51,7 +51,7 @@ fig_all_2_4 = plot_curves(df=local_2_4_GHz, title="All Channel Usage On 2.4 GHz 
 
 my_network_macs = ["00:00:00:00:00:00", "11:11:11:11:11:11"]
 
-my_networks, local_noise = split_by_mac(df=local_2_4_GHz, macs_to_include=my_network_macs)
+my_networks, local_noise = split_by_mac_list(df=local_2_4_GHz, macs_to_include=my_network_macs)
 
 fig_local_noise = plot_curves(df=local_noise, title="Channel Usage On 2.4 GHz Band Excluding My Networks")
 
@@ -73,15 +73,17 @@ Observe transmission power on a band of channels over time:
 import pandas as pd
 import time
 
-from raspberry_wifi_scanner import scan
+from raspberry_wifi_scanner import scan, get_wireless_interfaces
 from raspberry_wifi_scanner.dataframe_functions import split_by_band, dbm_per_channel
 from raspberry_wifi_scanner.plotting import plot_over_time
 
-one = scan(interface="wlan0")
+interfaces = get_wireless_interfaces()
+
+one = scan(interface=interfaces[0])
 time.sleep(300)
-two = scan(interface="wlan0")
+two = scan(interface=interfaces[0])
 time.sleep(600)
-three = scan(interface="wlan0")
+three = scan(interface=interfaces[0])
 
 valid_2_4_channels = [1,2,3,4,5,6,7,8,9,10,11]
 dbm = []
